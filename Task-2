@@ -1,0 +1,70 @@
+/*TASK TWO:
+Develop a Python program to track and manage student grades. The program should allow the user to input grades for different subjects or
+assignments, calculate the average grade, and display the overall grade along with any additional information (such as letter grade or GPA).*/
+
+import pandas as pd
+class student:
+    def __init__(self):
+        Rollno= 0
+        Name= " "
+        Age= 0
+    
+    def getdet(self):
+        self.Rollno= int(input("Enter Roll number: "))
+        self.Name= str(input("Enter Name_of_the_Student: "))
+        self.Age= int(input("Enter Age: "))
+    def putdet(self):
+        print("Rollno= ",self.Rollno)
+        print("Name= ",self.Name)
+        print("Age= ",self.Age)
+        
+class grade(student):
+    def __init__(self):
+        super().__init__()
+        M1= 0
+        M2= 0
+        M3= 0
+        M4= 0
+    
+    def getdet(self):
+        super().getdet()
+        self.M1= int(input("Enter Maths_score: "))
+        self.M2= int(input("Enter Physics_score: "))
+        self.M3= int(input("Enter Chemistry_score: "))
+        self.M4= int(input("Enter Biology_score: "))
+    def putdet(self):
+        super().putdet()
+        print("Maths_score: ",self.M1)
+        print("Physics_score: ",self.M2)
+        print("Chemistry_score: ",self.M3)
+        print("Biology_score: ",self.M4)
+        
+class result(grade):
+    def __init__(self):
+        super().__init__()
+        Total_grade= 0
+        Average_grade= 0
+    def calculate_result(self):
+        self.Total_grade= self.M1+self.M2+self.M3+self.M4
+        self.Average_grade= (self.Total_grade)/4
+    def putdet(self):
+        super().putdet()
+        self.calculate_result()
+        print("Total_grade: ",self.Total_grade)
+        print("Average: ",self.Average_grade)
+
+        if self.Total_grade>360:
+            print("Grade: A+")
+        elif self.Total_grade<290 and self.Total_grade<=360:
+            print("Grade: A")
+        elif self.Total_grade<200 and self.Total_grade<=290:
+            print("Grade: B+")
+        elif self.Total_grade<130 and self.Total_grade<=200:
+            print("Grade: B")
+        else:
+            print("Grade: C")
+        
+        
+R=result()
+R.getdet()
+R.putdet()
